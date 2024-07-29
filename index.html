@@ -1,0 +1,107 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title>
+    <link href="/Styles2/style_HQ.css?v=200901165432" type="text/css" rel="stylesheet" />
+</head>
+<body class="NonCompany">
+    <div id="outer" class="nonCompany">
+        <div class="logo"></div>
+        <div id="default" class="context">
+            <form id="form" method="post" action="Handler.aspx" target=_blank>
+                <div class="inputs">
+                    <input type="password" class="png" id="SafeCode" name="SafeCode" value="" autocomplete="off" maxlength="30">
+                    <a id="btnSubmit" class="inlinebk png" href="javascript:void(0)"></a><br />
+                </div>
+            </form>
+        </div>
+        <div class="browserSupport">
+            <a href="https://support.microsoft.com/zh-tw/help/17621/internet-explorer-downloads" class="invisbleBtn ie" rel="noopener noreferrer" target="_blank"></a>
+            <a href="https://www.mozilla.org/zh-TW/firefox/new/?utm_medium=referral&utm_source=firefox-com" class="invisbleBtn mz" rel="noopener noreferrer" target="_blank"></a>
+            <a href="https://www.google.com/chrome/" class="invisbleBtn ch" rel="noopener noreferrer" target="_blank"></a>
+            <img class="png" src="/Images/btn_explorer.png" />
+        </div>
+    </div>
+    <div class="landscape-mask">为了更好的浏览体验，请使用竖屏浏览！</div>
+
+
+    <!--[if IE 6]>
+        <script src="/Scripts/DD_belatedPNG.js?v=200901165432"></script>
+    <![endif]-->
+
+
+    <script>
+
+        if ((navigator.userAgent.match(/(phone|pad|pod|iPhone|iPod|ios|iPad|Android|Mobile|BlackBerry|IEMobile|MQQBrowser|JUC|Fennec|wOSBrowser|BrowserNG|WebOS|Symbian|Windows Phone)/i))) {
+            window.onload = function () {
+                window.DD_belatedPNG && DD_belatedPNG.fix('.png'); //ie6 透明背景
+                var btnSubmit = document.getElementById('btnSubmit');
+                //var CMS = document.getElementById('CMS');
+                var kw = document.getElementById('SafeCode');
+                document.getElementById('SafeCode').focus();
+
+                if (btnSubmit.addEventListener) {
+                    btnSubmit.addEventListener("click", onSubmit);
+                    //CMS.addEventListener("click", onClickSrv);
+                    kw.addEventListener("keypress", preventSubmit);
+                    //btnTV.addEventListener("click", toggleLargeTvBtn);
+                }
+                else {
+                    btnSubmit.attachEvent("onclick", onSubmit);
+                    //CMS.attachEvent("onclick", onClickSrv);
+                    kw.attachEvent("keypress", preventSubmit);
+                }
+            }
+        } else {
+            window.onload = function () {
+                window.DD_belatedPNG && DD_belatedPNG.fix('.png'); //ie6 透明背景
+                var btnSubmit = document.getElementById('btnSubmit');
+                //var CMS = document.getElementById('CMS');
+                var kw = document.getElementById('SafeCode');
+                document.getElementById('SafeCode').focus();
+
+                if (btnSubmit.addEventListener) {
+                    btnSubmit.addEventListener("click", onSubmit);
+                    //CMS.addEventListener("click", onClickSrv);
+                    kw.addEventListener("keypress", preventSubmit);
+                }
+                else {
+                    btnSubmit.attachEvent("onclick", onSubmit);
+                    //CMS.attachEvent("onclick", onClickSrv);
+                    kw.attachEvent("keypress", preventSubmit);
+                }
+            }
+            //document.getElementById("footer").style.bottom = "0px";
+
+        }
+
+        var url = "support.kf6688.xyz";
+
+        var serviceUrl = url == '' ? "http://support.kf6688.xyz" : "http://" + url;
+
+        function onClickSrv() {
+            window.open(serviceUrl, "aa", "top=0,left=0,width=400,height=400,menubar=no,scrollbars=no,toolbar=no,status=no");
+        }
+        function onSubmit(e) {
+            if (document.getElementById('SafeCode').value.trim().length > 0) {
+                form.submit();
+            } else {
+                return;
+            }
+        }
+        function preventSubmit(e) {
+            if (e.keyCode == 13) {
+                onSubmit(e);
+            }
+        }
+
+        if (typeof String.prototype.trim !== 'function') {
+            String.prototype.trim = function () {
+                return this.replace(/^\s+|\s+$/g, '');
+            }
+        }
+    </script>
+</body>
+</html>
