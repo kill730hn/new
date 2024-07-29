@@ -1,0 +1,496 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "MicrosoftJhengHei";
+    background: url(/Images/HQ/bg-login.jpg) no-repeat center top;
+    background: linear-gradient(rgba(255, 255, 255, 0.5), rgba(255, 255, 255, 0.5)), url(/Images/HQ/bg-login.jpg) no-repeat center top;
+}
+
+h1, h2, div, span, form, table, tr, td, img, button, a, p {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+input {
+    margin: 0;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: normal;
+    color: #f5ca84;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+.inlinebk {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.vb {
+    vertical-align: bottom;
+}
+
+.clear {
+    width: 1px;
+    clear: both;
+}
+
+.pb10 {
+    padding-bottom: 10px;
+}
+
+#outer {
+    width: 100%;
+    height: 100%;
+}
+
+.logo {
+    background: url('');
+    margin: auto;
+    width: 295px;
+    height: 112px;
+}
+
+.hidden {
+display:none!important;
+visibility:hidden;
+}
+
+#footer {
+    width: 100%;
+    height: 100px;
+    text-align: center;
+    background: url('/Images/HQ/bg-login1.png') no-repeat;
+    background-position: bottom;
+    position: absolute;
+    bottom: 0;
+    *background: none;
+    *height: 85px;
+}
+
+#btnCMS {
+    margin-top: 16%;
+    text-align: center;
+    z-index: 100;
+    position: relative;
+}
+
+
+    #btnCMS #CMS {
+        display: inline-block;
+        background: url('') no-repeat;
+        width: 76px;
+        height: 76px;
+    }
+
+    #btnCMS .sscInfo {
+        display: inline-block;
+        background: url('') no-repeat;
+        width: 76px;
+        height: 76px;
+    }
+
+/* default */
+#default {
+    position: absolute;
+    width: 800px;
+    max-width: 100%;
+    height: 410px;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+    margin: auto;
+    *top: 50%;
+    *left: 50%;
+    *margin: -205px 0 0 -210px;
+}
+
+.inputs {
+    margin-top: 15px;
+    margin-left: 180px;
+}
+
+#SafeCode {
+    width: 420px;
+    max-width: 90%;
+    height: 30px;
+    line-height: 30px;
+    font-size: 16px;
+    outline: none;
+    border: 0px solid #dd1635;
+    border-bottom-width: 1px;
+    background-color: transparent;
+    background: url('/Images/HQ/ico-search_red.png') no-repeat;
+    text-align: center;
+}
+
+#btnSubmit {
+    background: url('/Images/HQ/btn-login_red.png') no-repeat;
+    background-position: 0px 0px;
+    margin-top: 10%;
+    width: 130px;
+    height: 50px;
+}
+
+    #btnSubmit:hover {
+        background-position: 0px -51px;
+    }
+
+.btn-tryout1 {
+    background: url('/Images/btn_ssc_tryout.png') no-repeat;
+    width: 202px;
+    height: 50px;
+    margin-top: 40px;
+}
+
+.btn-cash {
+    background: url('/Images/btn_ssc_cash.png') no-repeat;
+    width: 202px;
+    height: 50px;
+    margin-top: 40px;
+    margin-left: 20px;
+}
+
+.btn-tryout3 {
+    background: url('/Images/btn_ssc_system.png') no-repeat;
+    width: 202px;
+    height: 50px;
+    margin-top: 20px;
+    margin-left: 20px;
+}
+/* navi switch */
+#navi {
+    position: absolute;
+    width: 324px;
+    height: 356px;
+    top: 50%;
+    left: 50%;
+    margin: -178px 0 0 -162px;
+    text-align: center;
+}
+
+    #navi a {
+        display: block;
+        width: 260px;
+        height: 54px;
+    }
+    #navi a.hide {
+        display: none;
+    }
+
+    #navi #btnMember {
+        background: url('/Images/HQ/btn-login_red.png');
+        background-position: 0px -213px;
+        background-repeat: no-repeat;
+        margin: 80px 0 0 36px;
+    }
+
+        #navi #btnMember:hover {
+            background-position: 0px -267px;
+        }
+
+    #navi #btnMiddle {
+        background: url('/Images/HQ/btn-login_red.png');
+        background-position: 0px -321px;
+        background-repeat: no-repeat;
+        margin: 40px 0 0 36px;
+    }
+
+        #navi #btnMiddle:hover {
+            background-position: 0px -375px;
+        }
+
+    #navi .mobile-speed {
+        background: url('/Images/HQ/btn-login_red.png');
+        background-position: 0px -536px;
+        background-repeat: no-repeat;
+        margin: 80px 0 0 36px;
+    }
+
+    #navi .pc-speed {
+        background: url('/Images/HQ/btn-login_red.png');
+        background-position: 0px -483px;
+        background-repeat: no-repeat;
+        margin: 30px 0 0 36px;
+    }
+
+#speed #lineBox {
+    position: absolute;
+    background: url('/Images/HQ/bg-login2.png');
+    background-size: cover;
+    width: 580px;
+    height: 580px;
+    top: 50%;
+    left: 50%;
+    margin: -290px 0 0 -290px;
+    text-align: center;
+}
+
+#speed .hd {
+    margin-top: 101px;
+    font-size: 20px;
+    text-align: center;
+    color: #f7b865;
+}
+
+#speed .bd {
+    width: 384px;
+    margin: 15px 0 0 99px;
+    font-size: 18px;
+    text-align: left;
+}
+
+
+
+#speed .bd .item {
+    margin-top: 20px;
+    display: inline-block;
+    width: 120px;
+    height: 97px;
+    text-align: center;
+    vertical-align: top;
+}
+
+#speed .bd a {
+    display: block;
+    color: #ffffff;
+}
+
+.gold {
+    color: #f7b865 !important;
+}
+
+#speed .bd .line {
+    margin-top: 15px;
+    display: block;
+    color: #db9895;
+}
+
+#speed .bd .status {
+    margin-top: 10px;
+    display: block;
+    color: #f7b865;
+}
+
+.landscape-mask {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    font-size: 21px;
+    padding: 10px;
+    z-index: 100;
+}
+
+.browserSupport {
+    position: absolute;
+    top: 78%;
+    right: 20px;
+}
+.browserSupport img {
+    z-index: -1;
+}
+
+.invisbleBtn, .invisbleBtn a {
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 58px;
+    z-index: 10;
+    background-color: rgb(100,100,100);
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+.ie{
+    top: 0px;
+    left: 103px;
+}
+.mz{
+    top: 0px;
+    left: 143px;
+}
+.ch{
+    top: 0px;
+    left: 184px;
+}
+/* IE8+, others */
+html >/**/ body .spacer {
+    /*height: 25% !important;*/
+}
+
+/* IE8 below */
+@media \0screen\,screen\9 {
+}
+/* IE6 hack */
+#navi a {
+    _line-height: 1em;
+    _padding: 25px 0 0 0;
+}
+
+/* 導入 Phone */
+@media only screen and (max-width: 735px) {
+    .inputs {
+        margin-top: 15px;
+        margin-left: 0px;
+        text-align: center;
+    }
+
+    .btn-tryout1 {
+        background: url('/Images/btn_ssc_tryout_mobile.png') no-repeat;
+        width: 160px;
+        height: 50px;
+        margin-top: 40px;
+        margin-left: 0px;
+    }
+
+    .btn-cash {
+        background: url('/Images/btn_ssc_cash_mobile.png') no-repeat;
+        width: 160px;
+        height: 50px;
+        margin-top: 40px;
+        margin-left: 20px;
+        margin-left: 0px;
+    }
+
+    .sscInfo {
+        background: url('/Images/btn_ssc_followsystem_mobile.png') no-repeat;
+        width: 160px;
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 0px;
+    }
+
+    .btn-tryout3 {
+        background: url('/Images/btn_ssc_system_mobile.png') no-repeat;
+        width: 160px;
+        height: 50px;
+        margin-top: 20px;
+        margin-left: 20px;
+        margin-left: 0px;
+    }
+
+    .footer {
+        display: none;
+    }
+    .browserSupport {
+        display: none;
+    }
+    #btnCMS a.tv-large {
+        background: url('/Images/btn_tv_pc_top1.png') no-repeat;
+        background-size: contain;
+        background-position: center;
+        top: -212px;
+        left: 174px;
+        width: 188px;
+        height: 188px;
+        top: -180px;
+        left: 193px;
+    }
+}
+
+/*iphone 4/5*/
+@media only screen and (max-width: 320px) {
+    #speed #lineBox {
+        width: 320px;
+        height: 320px;
+        margin: -160px 0 0 -160px;
+    }
+
+    #speed .hd {
+        margin-top: 55px;
+        font-size: 15px;
+    }
+
+    #speed .bd {
+        width: 300px;
+        margin: 0 0 0 15px;
+        font-size: 15px;
+    }
+
+        #speed .bd .item {
+            margin-top: 10px;
+            width: 95px;
+            height: 55px;
+        }
+
+    .btn-tryout1 {
+        margin-top: 20px;
+    }
+
+    .btn-cash {
+        margin-top: 20px;
+    }
+
+    .footer {
+        display: none;
+    }
+
+    .inputs a {
+        width: 130px;
+        background-size: contain;
+        height: 40px;
+    }
+
+    #btnCMS a.tv-large {
+        background: url('/Images/btn_tv_pc_top1.png') no-repeat;
+        background-size: contain;
+        background-position: center;
+        top: -212px;
+        left: 174px;
+        width: 165px;
+        height: 165px;
+        top: -159px;
+        left: 156px;
+    }
+}
+
+#outer .spacer {
+    display: none;
+}
+
+
+@media screen and (min-aspect-ratio: 13/9) and (max-width: 750px) and (min-width: 450px) {
+    /*横屏 css*/
+    .landscape-mask {
+        display: block;
+    }
+
+    #outer {
+        display: none;
+    }
+    .browserSupport {
+        display: none;
+    }
+}
+
+@media screen and (max-height:750px ) {
+    #footer {
+        display: none;
+    }
+    .browserSupport {
+        display: none;
+    }
+}

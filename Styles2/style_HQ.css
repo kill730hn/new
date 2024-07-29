@@ -1,0 +1,416 @@
+﻿html, body {
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+body {
+    font-family: "MicrosoftJhengHeiRegular";
+    background-color: #FF5511;
+}
+
+h1, h2, div, span, form, table, tr, td, img, button, a, p {
+    padding: 0;
+    margin: 0;
+    border: 0;
+}
+
+input {
+    margin: 0;
+}
+
+h1 {
+    font-size: 32px;
+    font-weight: normal;
+    color: #f5ca84;
+}
+
+table {
+    border-collapse: collapse;
+    border-spacing: 0;
+}
+
+a, a:hover {
+    text-decoration: none;
+}
+
+.inlinebk {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+.vm {
+    vertical-align: middle;
+}
+
+.vb {
+    vertical-align: bottom;
+}
+
+.clear {
+    width: 1px;
+    clear: both;
+}
+
+.pb10 {
+    padding-bottom: 10px;
+}
+
+#outer {
+    width: 100%;
+    height: 100%;
+}
+
+.hidden {
+    display: none !important;
+    visibility: hidden;
+}
+
+
+/* default */
+#outer {
+    position: relative;
+    min-width: 1024px;
+}
+
+.logo {
+    display: none;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    margin: -125px 0 0 -35px;
+    background: url('');
+    width: 69px;
+    height: 69px;
+}
+
+.nonCompany .logo {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+}
+
+#default {
+    position: absolute;
+    text-align: center;
+    width: 563px;
+    height: 69px;
+    top: 50%;
+    left: 50%;
+    margin: -35px 0 0 -281px;
+}
+
+    #default .inputs {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        background: url('/Images/img-Inputbox-pc.png');
+        width: 563px;
+        height: 65px;
+    }
+
+    #default #SafeCode {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        width: 390px;
+        height: 65px;
+        line-height: 65px;
+        font-size: 20px;
+        margin-left: 55px;
+        padding: 0;
+        outline: none;
+        border: 0px;
+        background-color: transparent;
+        vertical-align: top;
+    }
+
+    #default #btnSubmit {
+        display: inline-block;
+        *display: inline;
+        zoom: 1;
+        width: 100px;
+        height: 65px;
+    }
+
+.browserSupport {
+    position: absolute;
+    top: 78%;
+    right: 20px;
+}
+
+    .browserSupport img {
+        z-index: -1;
+    }
+
+@media only screen and (max-width: 735px) {
+    #outer {
+        min-width: unset;
+    }
+
+    .logo {
+        margin: -161px 0 0 -35px;
+        background: url('');
+        width: 69px;
+        height: 69px;
+    }
+
+    #default {
+        width: 320px;
+        height: 120px;
+        top: 50%;
+        left: 50%;
+        margin: -65px 0 0 -160px;
+    }
+
+        #default .inputs {
+            background: url('/Images/Inputbox-mobile.png') no-repeat;
+            width: 299px;
+            height: 56px;
+        }
+
+        #default #SafeCode {
+            width: 250px;
+            height: 56px;
+            line-height: 56px;
+        }
+
+        #default #btnSubmit {
+            background: url('/Images/search-mobile.png') no-repeat;
+            width: 300px;
+            height: 56px;
+            margin-top: 10px;
+        }
+
+    .browserSupport {
+        display: none;
+    }
+}
+
+@media only screen and (max-width: 400px) {
+}
+
+/*speed*/
+#speed #lineBox {
+    background-color: rgba(233,233,233,0.4);
+    border-radius: 20px;
+    position: absolute;
+    width: 520px;
+    height: 600px;
+    top: 50%;
+    left: 50%;
+    margin: -300px 0 0 -260px;
+    text-align: center;
+}
+
+    #speed #lineBox .white {
+        font-size: 20px;
+        color: #ffffff;
+    }
+
+#speed .hd {
+    margin-top: 50px;
+    font-size: 20px;
+    text-align: center;
+    color: #ffba00;
+}
+
+#speed .bd {
+    width: 440px;
+    margin: 15px 0 0 40px;
+    font-size: 18px;
+    text-align: left;
+}
+
+    #speed .bd .item {
+        margin-top: 5px;
+        display: inline-block;
+        width: 145px;
+        height: 70px;
+        text-align: center;
+        vertical-align: top;
+    }
+
+    #speed .bd a {
+        display: block;
+        color: #003969;
+    }
+
+.gold {
+}
+
+#speed .bd .line {
+    margin-top: 5px;
+    display: block;
+    color: #ffba00;
+}
+
+#speed .bd .status {
+    margin-top: 10px;
+    display: block;
+    color: #f7b865;
+}
+
+.sample-title, .clientIP-color {
+    color: #003969;
+}
+
+.hqwhite {
+    color: #ffffff;
+}
+
+.lineBox .sample-line {
+    margin-top: 5px;
+}
+
+.sample-line .item {
+    display: inline-block;
+    *display: inline;
+    zoom: 1;
+    margin-left: 10px;
+}
+
+.lineBox .sample-line .subItem {
+    line-height: 40px;
+}
+
+.lineBox .sample-line .line {
+    margin-left: 20px;
+    color: #ffba00;
+}
+
+.lineBox .clientIP {
+    margin-top: 10px;
+    color: #ffba00;
+}
+
+    .lineBox .clientIP .first {
+        width: 110px;
+    }
+
+@media only screen and (max-width: 735px) {
+    #speed #lineBox {
+        width: 320px;
+        height: 480px;
+        margin: -240px 0 0 -160px;
+        border-radius: unset;
+    }
+
+    #speed .bd {
+        width: 90%;
+        margin: 15px 0 0 20px;
+    }
+
+        #speed .bd .item {
+            margin-top: 5px;
+            display: inline-block;
+            width: 90px;
+            height: 70px;
+            text-align: center;
+            vertical-align: top;
+        }
+}
+
+/* navi switch */
+#navi {
+    position: absolute;
+    width: 324px;
+    height: 356px;
+    top: 50%;
+    left: 50%;
+    margin: -178px 0 0 -162px;
+    text-align: center;
+}
+
+    #navi a {
+        display: block;
+        width: 260px;
+        height: 52px;
+    }
+
+        #navi a.hide {
+            display: none;
+        }
+
+    #navi #btnMember {
+        background: url('/Images/member.png');
+        background-repeat: no-repeat;
+        margin: 80px 0 0 36px;
+    }
+
+    #navi #btnMiddle {
+        background: url('/Images/proxy.png');
+        background-repeat: no-repeat;
+        margin: 40px 0 0 36px;
+    }
+
+
+    #navi .mobile-speed {
+        background: url('/Images/btn-phone.png');
+        background-repeat: no-repeat;
+        margin: 80px 0 0 36px;
+    }
+
+    #navi .pc-speed {
+        background: url('/Images/btn-computer.png');
+        background-repeat: no-repeat;
+        margin: 30px 0 0 36px;
+    }
+
+
+
+
+
+
+
+.landscape-mask {
+    display: none;
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: #fff;
+    font-size: 21px;
+    padding: 10px;
+    z-index: 100;
+}
+
+
+.invisbleBtn, .invisbleBtn a {
+    display: inline-block;
+    position: absolute;
+    width: 40px;
+    height: 58px;
+    z-index: 10;
+    background-color: rgb(100,100,100);
+    opacity: 0;
+    filter: alpha(opacity=0);
+}
+
+.ie {
+    top: 0px;
+    left: 103px;
+}
+
+.mz {
+    top: 0px;
+    left: 143px;
+}
+
+.ch {
+    top: 0px;
+    left: 184px;
+}
+
+@media screen and (min-aspect-ratio: 13/9) and (max-width: 750px) and (min-width: 450px) {
+    /*横屏 css*/
+    .landscape-mask {
+        display: block;
+    }
+
+    .browserSupport {
+        display: none;
+    }
+}

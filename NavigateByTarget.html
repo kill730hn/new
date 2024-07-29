@@ -1,0 +1,48 @@
+﻿<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title></title><!--<网站名称设置>-->
+    <link href="/Styles2/style_HQ.css?v=200901165432" type="text/css" rel="stylesheet" />
+    <script src="/Scripts/jquery.js"></script>
+</head>
+<body>
+    <div id="outer">
+        <div id="navi">
+            <div class="logo png "></div>
+            <a class="png pc-link" id="btnMember" href="SearchLine.html?isbackend=1"></a>
+            <a class="png mobile-link" id="btnMember" href="PhoneDefault.html"></a>
+            <a class="png" id="btnMiddle" href="SearchLine.html?isbackend=2"></a>
+        </div>
+    </div>
+    <div id="footer" class="png"></div>
+    <div class="landscape-mask">为了更好的浏览体验，请使用竖屏浏览！</div>
+
+    <!--[if IE 6]>
+        <script src="/Scripts/DD_belatedPNG.js?v=200901165432"></script>
+    <![endif]-->
+    <!--[if lte IE 7]>
+        <script>
+            document.getElementById('footer').style.display = 'none';
+        </script>
+    <![endif]-->
+
+    <script>
+        window.onload = function () {
+            window.DD_belatedPNG && DD_belatedPNG.fix('.png'); //ie6 透明背景
+
+        }
+
+        $(document).ready(function () {
+            var userAgent = navigator.userAgent;
+
+            if (/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(userAgent)) { //不是PC登入
+                $(".pc-link").addClass('hide');
+            } else {
+                $(".mobile-link").addClass('hide');
+            }
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,302 @@
+﻿
+<!DOCTYPE html>
+<html>
+<head>
+    <meta http-equiv="Pragma" content="no-cache" />
+    <meta http-equiv="Cache-Control" content="no-cache" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="Expires" content="0" />
+    <link rel="icon" href="/Images/HQ/favicon.ico" type="image/x-icon" />
+    <link rel="shortcut icon" href="/Images/HQ/favicon.ico" type="image/x-icon" />
+    <title></title>
+    <link href="/Styles2/style_HQ.css?v=190719063009" type="text/css" rel="stylesheet" />
+    <script type="text/javascript">
+        if (!window.jQuery) {
+            document.write('<script type="text/javascript" src="/Scripts/jquery.js"><\/script>');
+        }
+    </script>
+
+
+</head>
+<body>
+    <div id="outer">
+        <div id="speed">
+            <div id="lineBox" class="lineBox png">
+                <div class="hbdWrapper">
+                    <div class="hd">
+                        线路选择: <span>值越小越好（毫秒）</span>
+                    </div>
+                    <div class="bd">
+                    </div>
+                    <div class="sample-line">
+                        <div class="sample-title">参考站点测试</div>
+                        <div class="sample-line-hd">
+                        </div>
+                    </div>
+                    <div class="clientIP">
+                        <!--<span class="clientIP-color first inlinebk">当前IP</span><br /><span class="yellow">218.91.211.214</span>-->
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="landscape-mask">使用竖屏浏览！</div>
+</body>
+
+</html>
+
+<!--[if IE 6]>
+    <script src="/Scripts/DD_belatedPNG.js?v=190719063009"></script>
+    <script type="text/javascript">
+    </script>
+<![endif]-->
+<!--[if lte IE 7]>
+    <script>
+        document.getElementById('footer').style.display = 'none';
+    </script>
+<![endif]-->
+
+<script type="text/javascript">
+
+    window.onload = function () {
+        window.DD_belatedPNG && DD_belatedPNG.fix('.png'); //ie6 透明背景
+    }
+	        $(document).ready(function () {
+            var userAgent = navigator.userAgent;
+
+            if (/Android|webOS|iPhone|iPod|iPad|BlackBerry/i.test(userAgent)) { //不是PC登入
+                $(".pc-link").addClass('hide');
+            } else {
+                $(".mobile-link").addClass('hide');
+            }
+        });
+    var lineCount,
+        index = 0,
+        timeArr = [],
+        lineBox = $("#lineBox"),
+        timeout = 2000,
+        arr_line = [];
+
+    var tokenArray = new RegExp('[\?&]token=([^&#]*)').exec(window.location.href);
+    var token = tokenArray != null ? tokenArray[1] || "" : "";
+    var isbackendArray = new RegExp('[\?&]isbackend=([^&#]*)').exec(window.location.href);
+    var isbackend = isbackendArray != null ? isbackendArray[1] || "" : "";
+
+    $.ajax({
+        url: "GetUrlList.ashx",
+        type: "GET",
+        cache: false,
+        data: { token: token, isbackend: isbackend },
+        dataType: "json",
+        success: function (x) {
+            if (x.Status == 1) {
+                if (!x.Data.length || !$.isArray(x.Data)) {
+                    //gotoUrl(location.host);
+                    //当取不到线路时，直接显示提示消息
+                    alert("获取线程失败，请刷新后重试");
+                    location.href = "/";
+                }
+                else {
+                    arr_line = x.Data;
+                    checkLine(arr_line);
+                }
+            }
+            else {
+                alert(x.Data);
+                location.href = "/";
+            }
+        },
+        error: function (e) {
+            alert("服务器错误，请刷新后重试！");
+        }
+    });
+    function GetResponseInfo(objRequest) {
+        returnText = "";
+        returnText = returnText + "*A*" + objRequest.responseText;
+        returnText = returnText + "*B*" + objRequest.status;
+        returnText = returnText + "*C*" + objRequest.statusText;
+        returnText = returnText + "*D*" + objRequest.getAllResponseHeaders;
+        return returnText;
+    }
+    function checkLine(arr) {
+        if (arr.length <= 0) {
+            gotoUrl(location.host);
+        }
+        lineBox.removeClass("hide");
+        var i = 0, len = arr.length, img;
+        lineCount = len,
+            str = "",
+            lineName = '线路'; //线路
+
+        for (; i < len; i++) {
+
+            var lineindex = 0, subDomain = arr[i].split('.');
+
+            lineindex = arr[i].indexOf(':') > 0 ? i + 1 : subDomain[0].substr(subDomain[0].length -1);
+            var position = "";
+            position = i % 3 == 0 ? "item_first" : i % 3 == 1 ? "item_second" : i % 3 == 2 ? "item_third" : "";
+
+            str += "<div class='item " + position + "'><div class='subItem'><a id='linkline" + i + "' href='" + arr[i] + "'>" + lineName + lineindex + "</a><span id='line" + i + "' class='line'>检测中...</span></div></div>"; //检测中...
+            //if (i < 4) {
+                loadImage(arr[i], i);
+            //}
+        }
+        lineBox.find(".bd").html(str);
+
+    }
+    function test() {
+        var i = 0, min, lastindex = 0, urls = [];
+        if (timeArr.length != lineCount) { return; }
+        if (getCookie("first_visit") == null) {  //一小时内第一次访问，重新测速
+            setCookie("first_visit", "1");
+            index = 0;
+            timeArr = [];
+            checkLine(arr_line);
+            return;
+        }
+
+        timeArr.sort(function (a, b) {
+            return a.time - b.time;
+        });
+        min = timeArr[0];
+        for (; i < lineCount; i++) {
+            if (i < 3 && timeArr[i].time < 2000) {
+                urls.push(timeArr[i]);
+            }
+        }
+        if (urls.length > 0) {
+            for (var i = 0; i < urls.length; i++) {
+                $("#linkline" + urls[i].index).addClass('gold');
+                $("#line" + urls[i].index).addClass('orange');
+                if ('HQ'  == '_168' || 'HQ'  == 'HQ') {
+                    $("#linkline" + urls[i].index).closest('.subItem').append('<span class="fire_ico"></span>');
+                }
+            }
+            var rnd = Math.floor(Math.random() * urls.length);
+            // $("#line" + urls[rnd].index).after("<span class='status'>选中</span>");
+            gotoUrl(urls[rnd].src);
+        } else {
+            // $("#line" + min.index).after("<span class='status'>最好</span>");
+            gotoUrl(min.src);
+        }
+    }
+
+    function gotoUrl(url) {
+        // location.href = "http://" + url + "/Member/Login?_=" + (new Date).getTime() + "&token=" + token;
+    }
+
+    function loadImage(src, i) {
+        var t1 = $.now(), t2, testlink;
+        window["callback" + i] = function () { };
+
+        testlink = "w" + (i + 1) + "." + location.hostname.split(".").slice(-2).join(".");
+        var port = src.split(":")[1];
+        if (port != undefined) testlink += ':' + port;
+
+        index++;
+
+        var t1 = $.now(), t2;
+        var image = new Image();
+        setTimeout(function () {
+            $('#line' + i).html(Math.ceil(Math.random() * 100+100));
+        }, 1000);
+        //image.src = "http://" + testlink + "/" + $.now() + ".jpg";
+        //image.onerror = function () {
+        //    clearTimeout(image.timer);
+        //    t2 = $.now();
+        //    if (i > 0 && i < 8) {
+        //        t2 += 100;
+        //    }
+        //    timeArr.push({
+        //        time: t2 - t1,
+        //        src: src,
+        //        index: i
+        //    });
+        //    $("#line" + i).html(t2 - t1);
+        //    test();
+        //    if (index < lineCount) {
+        //        loadImage(arr_line[index], index);
+        //    }
+        //}
+        //image.timer = setTimeout(function () {
+        //    image.onerror = null;
+        //    timeArr.push({
+        //        time: timeout,
+        //        src: src,
+        //        index: i
+        //    });
+        //    test();
+        //    if (index < lineCount) {
+        //        loadImage(arr_line[index], index);
+        //    }
+        //}, timeout);
+
+    }
+
+    //参考站点
+    var arrSample = ['www.163.com','www.baidu.com'];
+
+    function checkSampleLine(arrSample) {
+
+        var i = 0, len = arrSample.length;
+            str = "";
+
+        for (; i < len; i++) {
+            loadSample(arrSample[i], i);
+
+            str += "<div class='item'><div class='subItem'><span class='gold hqwhite inlinebk first'>" + arrSample[i] + "</span><span id='SampleLine" + i + "' class='line orange'></span></div></div>";
+        }
+        lineBox.find(".sample-line-hd").html(str);
+    }
+
+    function loadSample(src, i) {
+        var t1 = $.now(), t2;
+        window["SampleCallback" + i] = function () { };
+        $.ajax({
+            type: "get",
+            cache: false,
+            url: "https://" + src ,
+            timeout: timeout,
+            dataType: "jsonp",
+            jsonp: 'jsonp',
+            jsonpCallback: "SampleCallback" + i,
+            success: function () {
+
+            },
+            complete: function (xhr, status) {
+                if (status == "timeout") {
+                    $("#SampleLine" + i).addClass('timeoutColor').html("超时"); //超时
+                }
+                t2 = $.now();
+                var mytime = t2 - t1;
+                $("#SampleLine" + i).html(mytime);
+            }
+        });
+    }
+    checkSampleLine(arrSample);
+
+    function setCookie(name, value) {
+        var Days = 30;
+        var exp = new Date();
+        exp.setTime(exp.getTime() + 60 * 60 * 1000);
+        document.cookie = name + "=" + escape(value) + ";expires=" + exp.toGMTString() + ";path=/";
+    }
+
+    function getCookie(name) {
+        var arr, reg = new RegExp("(^| )" + name + "=([^;]*)(;|$)");
+        if (arr = document.cookie.match(reg)) {
+            return unescape(arr[2]);
+        } else {
+            return null;
+        }
+    }
+
+    function cookieEnable() {
+        var result = false;
+        if (navigator.cookiesEnabled) return true;
+        document.cookie = "testcookie=1;";
+        var cookieSet = document.cookie;
+        if (cookieSet.indexOf("testcookie=1") > -1) result = true;
+        return result;
+    }
+</script>
